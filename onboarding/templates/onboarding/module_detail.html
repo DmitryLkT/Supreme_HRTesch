@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ module.title }} — HRTech</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #f3f5f9;
+            color: #243047;
+            font-family: Arial, sans-serif;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        a {
+            color: #4169c1;
+        }
+
+        article {
+            margin-top: 24px;
+            padding: 28px;
+            background: white;
+            border: 1px solid #dce2ec;
+            border-radius: 12px;
+        }
+
+        .description {
+            color: #58657a;
+            line-height: 1.6;
+        }
+
+        .content {
+            margin-top: 24px;
+            line-height: 1.8;
+            overflow-wrap: anywhere;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <a href="{% url 'home' %}">← Вернуться к маршруту</a>
+
+        <article>
+            <h1>{{ module.title }}</h1>
+
+            <p class="description">{{ module.description }}</p>
+
+            <div class="content">
+                {% if module.content %}
+                    {{ module.content|linebreaks }}
+                {% else %}
+                    <p>Учебный материал пока не добавлен.</p>
+                {% endif %}
+            </div>
+
+            {% if is_completed %}
+                <p>✓ Ты завершил этот модуль.</p>
+            {% else %}
+                <form
+                    method="post"
+                    action="{% url 'complete_module' module_id=module.id %}"
+                >
+                    {% csrf_token %}
+
+                    <button type="submit">Завершить модуль</button>
+                </form>
+            {% endif %}
+        </article>
+    </main>
+</body>
+</html>

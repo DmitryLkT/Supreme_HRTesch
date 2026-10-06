@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ page_title }} — HRTech</title>
+
+    <style>
+        progress {
+            width: 100%;
+            height: 20px;
+            accent-color: #4169c1;
+        }
+
+        body {
+            margin: 0;
+            background: #f3f5f9;
+            color: #243047;
+            font-family: Arial, sans-serif;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .intro {
+            color: #58657a;
+            line-height: 1.6;
+        }
+
+        .modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .module {
+            background: white;
+            border: 1px solid #dce2ec;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .module h2 {
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        .module p {
+            line-height: 1.6;
+        }
+
+        .number {
+            color: #4169c1;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>{{ page_title }}</h1>
+
+        <p class="intro">
+            Привет, {{ user.get_username }}!
+            Здесь ты познакомишься с компанией и правилами работы.
+        </p>
+
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Выйти</button>
+        </form>
+
+        <section aria-label="Прогресс адаптации">
+            <h2>Твой прогресс</h2>
+
+            <p>
+                Завершено {{ completed_count }} из {{ total_modules }} модулей.
+                Прогресс: {{ progress_percent }}%.
+            </p>
+
+            <progress
+                value="{{ progress_percent }}"
+                max="100"
+                aria-label="Процент завершённых модулей"
+            >
+                {{ progress_percent }}%
+            </progress>
+        </section>
+
+        <section class="modules" aria-label="Модули адаптации">
+            {% for module in modules %}
+                <article class="module">
+                    <p class="number">Модуль {{ forloop.counter }}</p>
+                    <h2>{{ module.title }}</h2>
+                    <p>{{ module.description }}</p>
+
+                    {% if module.id in completed_module_ids %}
+                        <p>✓ Завершён</p>
+                    {% else %}
+                        <p>Ещё не завершён</p>
+                    {% endif %}
+
+                    <a href="{% url 'module_detail' module_id=module.id %}">
+                        Открыть материал
+                    </a>
+                </article>
+            {% empty %}
+                <p>В твой маршрут пока не добавлены модули.</p>
+            {% endfor %}
+        </section>
+    </main>
+</body>
+</html>

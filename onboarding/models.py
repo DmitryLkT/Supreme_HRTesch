@@ -29,7 +29,7 @@ class Module(models.Model):
 
     class Meta:
         ordering=['order', 'id']
-        verbose_name="Модуль адаптации"
+        verbose_name="Модули адаптации"
         verbose_name_plural=verbose_name
 
     def __str__(self):
@@ -66,3 +66,54 @@ class ModuleCompletion(models.Model):
 
     def __str__(self):
         return f"{self.user} — {self.module}"
+
+class Question(models.Model):
+    module = models.ForeignKey(
+        Module,
+        on_delete=models.CASCADE,
+        related_name="questions",
+        verbose_name="Модуль"
+    )
+
+    text=models.TextField(
+        verbose_name="Текст вопроса"
+    )
+
+    order=models.PositiveIntegerField(
+        default=0,
+        verbose_name="Порядок"
+    )
+
+    class Meta:
+        ordering=['order', 'id']
+        verbose_name="Вопрос"
+        verbose_name_plural="Вопросы"
+
+    def __str__(self):
+        return self.text[:80]
+
+class AnswerOption(models.Model):
+    question=models.ForeignKey(
+        Question,
+        on_delete=models.CASCADE,
+        related_name="options",
+        verbose_name="Вопрос"
+    )
+
+    text=models.TextField(
+        max_length=300,
+        verbose_name="Текст ответа"
+    )
+
+    is_correct=models.BooleanField(
+        default=False,
+        verbose_name="Правильный ответ"
+    )
+
+    class Meta:
+        ordering=['id']
+        verbose_name="Вариант ответа"
+        verbose_name_plural="Варианты ответов"
+
+    def __str__(self):
+        return self.text

@@ -42,6 +42,38 @@
             line-height: 1.8;
             overflow-wrap: anywhere;
         }
+
+        .question-form {
+            margin: 24px 0;
+        }
+
+        .question-form fieldset {
+            padding: 20px;
+            border: 1px solid #dce2ec;
+            border-radius: 10px;
+        }
+
+        .question-form legend {
+            padding: 0 8px;
+            font-weight: bold;
+        }
+
+        .answer-option {
+            display: block;
+            margin: 14px 0;
+            line-height: 1.5;
+            cursor: pointer;
+        }
+
+        .question-form button {
+            margin-top: 12px;
+            padding: 10px 18px;
+            background: #4169c1;
+            color: white;
+            border: 0;
+            border-radius: 6px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -61,6 +93,46 @@
                     <p>Учебный материал пока не добавлен.</p>
                 {% endif %}
             </div>
+
+            <section aria-label="Проверка знаний">
+                <h2>Проверь себя</h2>
+
+                {% for question in module.questions.all %}
+                    <form
+                        method="post"
+                        action="{% url 'answer_question' question_id=question.id %}"
+                        class="question-form"
+                    >
+                        {% csrf_token %}
+
+                        <fieldset>
+                            <legend>
+                                {{ forloop.counter }}. {{ question.text }}
+                            </legend>
+
+                            {% for option in question.options.all %}
+                            <label class="answer-option">
+                                <input
+                                    type="radio"
+                                    name="option_id"
+                                    value="{{ option.id }}"
+                                    required
+                                >
+                                {{ option.text }}
+                            </label>
+                            {% empty %}
+                                <p>Варианты ответа пока не добавлены.</p>
+                            {% endfor %}
+                        </fieldset>
+
+                        {% if question.options.all %}
+                            <button type="submit">Проверить ответ</button>
+                        {% endif %}
+                    </form>
+                {% empty %}
+                <p>Для этого модуля задания пока не добавлены.</p>
+                {% endfor %}
+            </section>
 
             {% if is_completed %}
                 <p>✓ Ты завершил этот модуль.</p>

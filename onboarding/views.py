@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
 
-from .models import Module, ModuleCompletion
+from .models import Module, ModuleCompletion, AnswerOption, Question
 
 
 @login_required
@@ -40,7 +40,7 @@ def home(request):
 @login_required
 def module_detail(request, module_id):
     module = get_object_or_404(
-        Module,
+        Module.objects.prefetch_related("questions__options"),
         id=module_id,
         is_published=True,
     )
@@ -77,3 +77,48 @@ def complete_module(request, module_id):
     )
 
     return redirect("module_detail", module_id=module.id)
+
+@login_required
+@require_POST
+def answer_question(request, question_id):
+    question = get_object_or_404(
+        Question,
+        id=question_id,
+        module__is_published=True
+    )
+
+    option_id=request.POST.get("option_id")
+
+    if not option_id or not option_id.isdecimal():
+        return render(
+            request,
+            "onboarding/question_result.html",
+            {
+                "question": question,
+                "error": "Выбери вариант ответа."
+            },
+            status=400
+        )
+
+    selected_option = get_object_or_404(
+        AnswerOption,
+        id=option_id,
+        question=question,
+    )
+
+    correct_option = question.options.filter(
+        is_correct=True
+    ).first()
+
+    context = {
+        "question": question,
+        "selected_option": selected_option,
+        "is_correct": selected_option.is_correct,
+        "correct_option": correct_option
+    }
+
+    return render(
+        request,
+        "onboarding/question_result.html",
+        context
+    )

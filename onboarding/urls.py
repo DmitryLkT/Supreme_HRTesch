@@ -14,5 +14,11 @@ urlpatterns = [
         "modules/<int:module_id>/complete/",
         views.complete_module,
         name="complete_module"
+    ),
+
+    path(
+        "questions/<int:question_id>/answer",
+        views.answer_question,
+        name="answer_question"
     )
 ]

@@ -1,77 +1,19 @@
-<!DOCTYPE html>
+{% load static %}
+<!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Вход — HRTech</title>
-
-    <style>
-        body {
-            margin: 0;
-            background: #f3f5f9;
-            color: #243047;
-            font-family: Arial, sans-serif;
-        }
-
-        main {
-            max-width: 420px;
-            margin: 60px auto;
-            padding: 28px;
-            background: white;
-            border: 1px solid #dce2ec;
-            border-radius: 12px;
-        }
-
-        form p {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        input {
-            box-sizing: border-box;
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #bac5d6;
-            border-radius: 6px;
-        }
-
-        button {
-            padding: 10px 18px;
-            background: #4169c1;
-            color: white;
-            border: 0;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        .errorlist {
-            color: #b42318;
-        }
-    </style>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Вход — Рядом</title><link rel="stylesheet" href="{% static 'onboarding/css/app.css' %}">
 </head>
-
-<body>
-    <main>
-        <h1>Вход в HRTech</h1>
-
-        <p>Войди, чтобы открыть материалы адаптации.</p>
-
-        <form method="post">
-            {% csrf_token %}
-
-            {{ form.as_p }}
-
-            {% if next %}
-                <input type="hidden" name="next" value="{{ next }}">
-            {% endif %}
-
-            <button type="submit">Войти</button>
-        </form>
-    </main>
+<body class="login-page">
+<main class="login-card card">
+    <div class="brand"><div class="brand-mark">Р</div><div class="brand-name">Рядом</div></div>
+    <h1>Рады видеть тебя</h1><p class="muted">Войди, чтобы открыть материалы адаптации.</p>
+    <form method="post" class="login-form">
+        {% csrf_token %}{{ form.as_p }}
+        {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
+        <button type="submit" class="btn btn-primary">Войти →</button>
+    </form>
+</main>
 </body>
 </html>

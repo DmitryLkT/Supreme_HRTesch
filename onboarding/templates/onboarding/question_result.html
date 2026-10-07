@@ -1,78 +1,18 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Результат ответа — HRTech</title>
-
-    <style>
-        body {
-            margin: 0;
-            background: #f3f5f9;
-            color: #243047;
-            font-family: Arial, sans-serif;
-        }
-
-        main {
-            max-width: 700px;
-            margin: 40px auto;
-            padding: 28px;
-            background: white;
-            border-radius: 12px;
-        }
-
-        p {
-            line-height: 1.6;
-        }
-
-        .success {
-            color: #157347;
-        }
-
-        .error {
-            color: #b42318;
-        }
-
-        a {
-            color: #4169c1;
-        }
-    </style>
-</head>
-
-<body>
-    <main>
-        <h1>Результат ответа</h1>
-
-        <h2>{{ question.text }}</h2>
-
-        {% if error %}
-            <p class="error">{{ error }}</p>
-        {% else %}
-            <p>
-                Твой ответ:
-                <strong>{{ selected_option.text }}</strong>
-            </p>
-
-            {% if is_correct %}
-                <p class="success">✓ Правильно!</p>
-            {% else %}
-                <p class="error">
-                    Пока неверно. Вернись к материалу и попробуй ещё раз.
-                </p>
-
-                {% if correct_option %}
-                    <p>
-                        Правильный ответ:
-                        <strong>{{ correct_option.text }}</strong>
-                    </p>
-                {% endif %}
-            {% endif %}
+{% extends "onboarding/base.html" %}
+{% block title %}Результат ответа — Рядом{% endblock %}
+{% block content %}
+<div class="top"><div class="hello"><div class="eyebrow">Проверка знаний</div><h1>Результат ответа</h1></div></div>
+<section class="card result-card">
+    <h2>{{ question.text }}</h2>
+    {% if error %}<p class="error" role="alert">{{ error }}</p>
+    {% else %}
+        <p>Твой ответ: <strong>{{ selected_option.text }}</strong></p>
+        {% if is_correct %}<p class="success">✓ Правильно!</p>
+        {% else %}<p class="error">Пока неверно. Вернись к материалу и попробуй ещё раз.</p>
+            {% if correct_option %}<p>Правильный ответ: <strong>{{ correct_option.text }}</strong></p>{% endif %}
         {% endif %}
-
-        <a href="{% url 'module_detail' module_id=question.module_id %}">
-            ← Вернуться к модулю
-        </a>
-    </main>
-</body>
-</html>
+    {% endif %}
+    <a class="btn btn-primary" href="{% url 'module_detail' module_id=question.module_id %}#question-{{ question.id }}">← Вернуться к вопросу</a>
+    <a class="back-link" href="{% url 'home' %}">Вернуться к маршруту</a>
+</section>
+{% endblock %}

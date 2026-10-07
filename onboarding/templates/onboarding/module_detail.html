@@ -1,152 +1,31 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>{{ module.title }} — HRTech</title>
-
-    <style>
-        body {
-            margin: 0;
-            background: #f3f5f9;
-            color: #243047;
-            font-family: Arial, sans-serif;
-        }
-
-        main {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        a {
-            color: #4169c1;
-        }
-
-        article {
-            margin-top: 24px;
-            padding: 28px;
-            background: white;
-            border: 1px solid #dce2ec;
-            border-radius: 12px;
-        }
-
-        .description {
-            color: #58657a;
-            line-height: 1.6;
-        }
-
-        .content {
-            margin-top: 24px;
-            line-height: 1.8;
-            overflow-wrap: anywhere;
-        }
-
-        .question-form {
-            margin: 24px 0;
-        }
-
-        .question-form fieldset {
-            padding: 20px;
-            border: 1px solid #dce2ec;
-            border-radius: 10px;
-        }
-
-        .question-form legend {
-            padding: 0 8px;
-            font-weight: bold;
-        }
-
-        .answer-option {
-            display: block;
-            margin: 14px 0;
-            line-height: 1.5;
-            cursor: pointer;
-        }
-
-        .question-form button {
-            margin-top: 12px;
-            padding: 10px 18px;
-            background: #4169c1;
-            color: white;
-            border: 0;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-    </style>
-</head>
-
-<body>
-    <main>
-        <a href="{% url 'home' %}">← Вернуться к маршруту</a>
-
-        <article>
-            <h1>{{ module.title }}</h1>
-
-            <p class="description">{{ module.description }}</p>
-
-            <div class="content">
-                {% if module.content %}
-                    {{ module.content|linebreaks }}
-                {% else %}
-                    <p>Учебный материал пока не добавлен.</p>
-                {% endif %}
-            </div>
-
-            <section aria-label="Проверка знаний">
-                <h2>Проверь себя</h2>
-
-                {% for question in module.questions.all %}
-                    <form
-                        method="post"
-                        action="{% url 'answer_question' question_id=question.id %}"
-                        class="question-form"
-                    >
-                        {% csrf_token %}
-
-                        <fieldset>
-                            <legend>
-                                {{ forloop.counter }}. {{ question.text }}
-                            </legend>
-
-                            {% for option in question.options.all %}
-                            <label class="answer-option">
-                                <input
-                                    type="radio"
-                                    name="option_id"
-                                    value="{{ option.id }}"
-                                    required
-                                >
-                                {{ option.text }}
-                            </label>
-                            {% empty %}
-                                <p>Варианты ответа пока не добавлены.</p>
-                            {% endfor %}
-                        </fieldset>
-
-                        {% if question.options.all %}
-                            <button type="submit">Проверить ответ</button>
-                        {% endif %}
-                    </form>
-                {% empty %}
-                <p>Для этого модуля задания пока не добавлены.</p>
-                {% endfor %}
-            </section>
-
-            {% if is_completed %}
-                <p>✓ Ты завершил этот модуль.</p>
-            {% else %}
-                <form
-                    method="post"
-                    action="{% url 'complete_module' module_id=module.id %}"
-                >
-                    {% csrf_token %}
-
-                    <button type="submit">Завершить модуль</button>
-                </form>
-            {% endif %}
-        </article>
-    </main>
-</body>
-</html>
+{% extends "onboarding/base.html" %}
+{% block title %}{{ module.title }} — Рядом{% endblock %}
+{% block content %}
+<a class="back-link" href="{% url 'home' %}#modules">← Вернуться к маршруту</a>
+<div class="top"><div class="hello"><div class="eyebrow">Учебный модуль</div><h1>{{ module.title }}</h1><p>{{ module.description }}</p></div></div>
+<article class="card material-card"><div class="content">
+    {% if module.content %}{{ module.content|linebreaks }}{% else %}<p class="muted">Учебный материал пока не добавлен.</p>{% endif %}
+</div></article>
+<div class="section-title"><h3>Проверь себя</h3></div>
+<section class="questions" aria-label="Проверка знаний">
+{% for question in module.questions.all %}
+    <form method="post" action="{% url 'answer_question' question_id=question.id %}" class="question-form card" id="question-{{ question.id }}">
+        {% csrf_token %}
+        <fieldset>
+            <legend>{{ forloop.counter }}. {{ question.text }}</legend>
+            {% for option in question.options.all %}
+                <label class="answer-option"><input type="radio" name="option_id" value="{{ option.id }}" required><span>{{ option.text }}</span></label>
+            {% empty %}<p class="muted">Варианты ответа пока не добавлены.</p>{% endfor %}
+        </fieldset>
+        {% if question.options.all %}<button type="submit" class="btn btn-primary">Проверить ответ</button>{% endif %}
+    </form>
+{% empty %}<div class="card"><p class="muted">Для этого модуля задания пока не добавлены.</p></div>{% endfor %}
+</section>
+<section class="card completion-card">
+    {% if is_completed %}<p class="success">✓ Ты завершил этот модуль.</p><a class="btn btn-ghost" href="{% url 'home' %}">Вернуться к маршруту</a>
+    {% else %}
+        <h2>Готово?</h2><p class="muted">После изучения материала отметь модуль как завершённый.</p>
+        <form method="post" action="{% url 'complete_module' module_id=module.id %}">{% csrf_token %}<button type="submit" class="btn btn-primary">Завершить модуль</button></form>
+    {% endif %}
+</section>
+{% endblock %}

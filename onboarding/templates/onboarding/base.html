@@ -1,4 +1,5 @@
-{% load static %}
+{% load static role_tags %}
+{% hr_account as user_is_hr %}
 <!doctype html>
 <html lang="ru">
 <head>
@@ -10,35 +11,38 @@
 <body>
 <div class="app">
     <aside class="sidebar" aria-label="Навигация">
-        <a class="brand" href="{% url 'home' %}">
-            <div class="brand-mark">Р</div><div class="brand-name">Рядом</div>
-        </a>
+        <a class="brand" href="{% url 'home' %}"><div class="brand-mark">Р</div><div class="brand-name">Рядом</div></a>
         <nav class="nav">
+        {% if user.is_superuser or user_is_hr %}
+            <div class="nav-label">Команда</div>
+            <a class="nav-item{% if request.resolver_match.url_name == 'hr_dashboard' or request.resolver_match.url_name == 'hr_employee_detail' %} active{% endif %}" href="{% url 'hr_dashboard' %}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg>
+                Прогресс сотрудников
+            </a>
+            <span class="nav-item nav-disabled" aria-disabled="true">Самочувствие <span class="step-tag">Скоро</span></span>
+            {% if user.is_superuser %}<a class="nav-item" href="{% url 'admin:index' %}">Django-админка →</a>{% endif %}
+        {% else %}
             <div class="nav-label">Мой онбординг</div>
             <a class="nav-item{% if request.resolver_match.url_name == 'home' %} active{% endif %}" href="{% url 'home' %}">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
-                Сегодня
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>Сегодня
             </a>
             <a class="nav-item" href="{% url 'home' %}#modules">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-                Мой путь
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Мой путь
             </a>
             <a class="nav-item" href="{% url 'home' %}#progress">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M17 7h4v4"/></svg>
-                Прогресс
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M17 7h4v4"/></svg>Прогресс
             </a>
             <span class="nav-item nav-disabled" aria-disabled="true">Первые недели <span class="step-tag">Скоро</span></span>
             <span class="nav-item nav-disabled" aria-disabled="true">Забота <span class="step-tag">Скоро</span></span>
             <span class="nav-item nav-disabled" aria-disabled="true">Контакты <span class="step-tag">Скоро</span></span>
+        {% endif %}
         </nav>
         <div class="sidebar-foot">
             <div class="user">
                 <div class="avatar">{{ user.get_username|slice:':1'|upper }}</div>
-                <div class="user-info"><b>{% firstof user.get_full_name user.username %}</b><span>Мой аккаунт</span></div>
+                <div class="user-info"><b>{% firstof user.get_full_name user.username %}</b><span>{% if user.is_superuser %}Администратор{% elif user_is_hr %}HR{% else %}Сотрудник{% endif %}</span></div>
             </div>
-            <form method="post" action="{% url 'logout' %}">
-                {% csrf_token %}<button type="submit" class="nav-item logout-button">Выйти</button>
-            </form>
+            <form method="post" action="{% url 'logout' %}">{% csrf_token %}<button type="submit" class="nav-item logout-button">Выйти</button></form>
         </div>
     </aside>
     <main class="main" id="main-content">{% block content %}{% endblock %}</main>

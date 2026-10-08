@@ -61,6 +61,10 @@ class ModuleCompletion(models.Model):
             )
         ]
 
+        permissions=[
+            ("view_employee_progress", "Может просматривать прогресс всех сотрудников")
+        ]
+
         verbose_name="Завершение модуля"
         verbose_name_plural="Завершение модулей"
 

@@ -1,0 +1,37 @@
+{% extends "onboarding/base.html" %}
+{% block title %}Прогресс сотрудников — Рядом{% endblock %}
+{% block content %}
+<div class="top"><div class="hello"><div class="eyebrow">HR-кабинет</div><h1>Прогресс сотрудников</h1><p>Адаптация команды — всё в одном месте.</p></div></div>
+<div class="hr-stats">
+    <div class="card"><div class="card-label">Активных сотрудников</div><p class="card-value">{{ employee_count }}</p></div>
+    <div class="card"><div class="card-label">Завершили маршрут</div><p class="card-value">{{ finished_count }}</p></div>
+    <div class="card"><div class="card-label">В процессе</div><p class="card-value">{{ in_progress_count }}</p></div>
+    <div class="card"><div class="card-label">Не начали</div><p class="card-value">{{ not_started_count }}</p></div>
+</div>
+<div class="section-title"><h3>Сотрудники</h3><span class="muted">Опубликованных модулей: {{ total_modules }}</span></div>
+<form method="get" class="hr-search" role="search">
+    <label class="sr-only" for="employee-search">Поиск сотрудника по имени или логину</label>
+    <input id="employee-search" name="q" type="search" maxlength="100" value="{{ query }}" placeholder="Имя или логин сотрудника">
+    <button class="btn btn-primary" type="submit">Найти</button>
+    {% if query %}<a class="btn btn-ghost" href="{% url 'hr_dashboard' %}">Сбросить</a>{% endif %}
+</form>
+{% if not total_modules %}<p class="muted">Пока нет опубликованных модулей. Процент прогресса равен нулю.</p>{% endif %}
+<div class="card hr-table-card"><div class="hr-table-wrap">
+<table class="hr-table">
+    <caption class="sr-only">Прогресс адаптации сотрудников</caption>
+    <thead><tr><th scope="col">Сотрудник</th><th scope="col">Завершено</th><th scope="col">Прогресс</th><th scope="col">Последнее завершение</th><th scope="col">Подробнее</th></tr></thead>
+    <tbody>{% for employee in page_obj %}<tr>
+        <td><b>{% firstof employee.get_full_name employee.username %}</b><span class="hr-login">{{ employee.username }}</span></td>
+        <td>{{ employee.completed_count }} из {{ total_modules }}</td>
+        <td><div class="hr-progress"><progress max="100" value="{{ employee.progress_percent }}" aria-label="Прогресс {{ employee.username }}">{{ employee.progress_percent }}%</progress><span>{{ employee.progress_percent }}%</span></div></td>
+        <td>{% if employee.last_completed_at %}{{ employee.last_completed_at|date:"d.m.Y H:i" }}{% else %}—{% endif %}</td>
+        <td><a class="step-cta" href="{% url 'hr_employee_detail' user_id=employee.id %}" aria-label="Открыть прогресс {{ employee.username }}">Открыть</a></td>
+    </tr>{% empty %}<tr><td colspan="5">{% if query %}По этому запросу сотрудники не найдены.{% else %}Пока нет активных сотрудников. Аккаунты HR и администраторов здесь не отображаются.{% endif %}</td></tr>{% endfor %}</tbody>
+</table></div></div>
+{% if page_obj.has_other_pages %}<nav class="hr-pagination" aria-label="Страницы списка сотрудников">
+    {% if page_obj.has_previous %}<a class="btn btn-ghost" href="?q={{ query|urlencode }}&amp;page={{ page_obj.previous_page_number }}">← Назад</a>{% endif %}
+    <span>Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+    {% if page_obj.has_next %}<a class="btn btn-ghost" href="?q={{ query|urlencode }}&amp;page={{ page_obj.next_page_number }}">Далее →</a>{% endif %}
+</nav>{% endif %}
+<p class="hr-note muted">Показатели вверху относятся ко всей команде. Прогресс отражает отметки о завершении модулей, а не баллы за ответы.</p>
+{% endblock %}

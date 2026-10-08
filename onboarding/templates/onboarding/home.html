@@ -1,11 +1,11 @@
 {% extends "onboarding/base.html" %}
-{% block title %}Рядом — Сегодня{% endblock %}
+{% block title %}Altra — Сегодня{% endblock %}
 {% block content %}
 <div class="top">
     <div class="hello">
         <div class="eyebrow">Твой маршрут адаптации</div>
         <h1>Привет, {% firstof user.first_name user.username %} 👋</h1>
-        <p>Знакомься с компанией в своём темпе. Мы рядом.</p>
+        <p>Знакомься с компанией в своём темпе.</p>
     </div>
     <div class="streak"><span>Завершено <b>{{ completed_count }} / {{ total_modules }}</b></span></div>
 </div>

@@ -1,5 +1,5 @@
 {% extends "onboarding/base.html" %}
-{% block title %}Прогресс {{ employee.username }} — Рядом{% endblock %}
+{% block title %}Прогресс {{ employee.username }} — Altra{% endblock %}
 {% block content %}
 <a class="back-link" href="{% url 'hr_dashboard' %}">← К списку сотрудников</a>
 <div class="top"><div class="hello"><div class="eyebrow">Прогресс сотрудника</div><h1>{% firstof employee.get_full_name employee.username %}</h1><p>Логин: {{ employee.username }}</p></div></div>

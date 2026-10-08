@@ -5,13 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}Рядом{% endblock %}</title>
+    <title>{% block title %}Altra{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'onboarding/css/app.css' %}">
 </head>
 <body>
 <div class="app">
     <aside class="sidebar" aria-label="Навигация">
-        <a class="brand" href="{% url 'home' %}"><div class="brand-mark">Р</div><div class="brand-name">Рядом</div></a>
+        <a class="brand" href="{% url 'home' %}"><div class="brand-mark">A</div><div class="brand-name">Altra</div></a>
         <nav class="nav">
         {% if user.is_superuser or user_is_hr %}
             <div class="nav-label">Команда</div>

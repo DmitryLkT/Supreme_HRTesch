@@ -14,7 +14,6 @@ def home(request):
     if is_hr(request.user):
         return redirect("hr_dashboard")
     if request.user.groups.filter(name="HR").exists():
-        # Не маскируем неправильную настройку роли под аккаунт сотрудника.
         from django.core.exceptions import PermissionDenied
         raise PermissionDenied("Группе HR не назначено право просмотра прогресса.")
 

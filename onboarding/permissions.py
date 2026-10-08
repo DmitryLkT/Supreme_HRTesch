@@ -30,8 +30,6 @@ def employee_required(view):
     @login_required
     @wraps(view)
     def wrapped(request, *args, **kwargs):
-        # Админ может открыть материалы для проверки.
-        # HR-аккаунт предназначен для просмотра команды, не для обучения.
         if not request.user.is_superuser and request.user.groups.filter(name="HR").exists():
             raise PermissionDenied("Обучение доступно через аккаунт сотрудника.")
         return view(request, *args, **kwargs)

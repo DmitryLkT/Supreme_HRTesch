@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
+from django.http import JsonResponse
 
 from .models import Module, ModuleCompletion, AnswerOption, Question
 
@@ -56,13 +57,41 @@ def complete_module(request, module_id):
 @require_POST
 def answer_question(request, question_id):
     question = get_object_or_404(Question, id=question_id, module__is_published=True)
+    is_ajax = (request.headers.get("X-Requested-With") == "XMLHttpRequest")
     option_id = request.POST.get("option_id")
+
     if not option_id or not option_id.isdecimal():
-        return render(request, "onboarding/question_result.html", {
-            "question": question, "error": "Выбери вариант ответа.",
-        }, status=400)
+        message = "Выбери вариант ответа"
+
+        if is_ajax:
+            return JsonResponse({"message": message}, status=400)
+
+        return render(
+            request,
+            "onboarding/question_result.html",
+            {
+                "question": question,
+                "error": message,
+            },
+            status=400)
+
     selected_option = get_object_or_404(AnswerOption, id=option_id, question=question)
     correct_option = question.options.filter(is_correct=True).first()
+
+    if selected_option.is_correct:
+        message = "Правильно!"
+    else:
+        message = "Неверно. Попробуй еще раз."
+
+        if correct_option:
+            message += f"Правильный ответ: {correct_option.text}"
+
+    if is_ajax:
+        return JsonResponse({
+            "is_correct": selected_option.is_correct,
+            "message": message
+        })
+
     return render(request, "onboarding/question_result.html", {
         "question": question,
         "selected_option": selected_option,

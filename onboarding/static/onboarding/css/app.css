@@ -306,6 +306,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 .login-form label { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 600; }
 .login-form input:not([type="hidden"]) { width: 100%; border: 1px solid var(--line); border-radius: var(--r-sm); padding: 12px 14px; font: inherit; background: var(--bg); }
 .login-form .btn { width: 100%; justify-content: center; margin-top: 12px; }
+.main {max-width: 1250px; margin-left: auto; margin-right: auto;}
 @media (max-width: 900px) {
   .app { grid-template-columns: minmax(0, 1fr); }
   .sidebar { flex-wrap: wrap; overflow-x: visible; }
@@ -327,4 +328,27 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* Результат проверки под вопросом */
+.answer-feedback {
+    margin: 18px 0 0;
+    padding: 14px 18px;
+    border-radius: var(--r-sm);
+    overflow-wrap: anywhere;
+}
+
+.answer-feedback.success {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+.answer-feedback.error {
+    background: #fff0ed;
+    color: var(--alert);
+}
+
+.question-form button:disabled {
+    opacity: 0.65;
+    cursor: wait;
 }

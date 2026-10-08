@@ -352,3 +352,34 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
     opacity: 0.65;
     cursor: wait;
 }
+
+/* Появление блоков, до которых пользователь докрутил */
+.hero-step.reveal-on-scroll,
+.checklist .step.reveal-on-scroll,
+.progress-grid .card.reveal-on-scroll,
+.pulse.reveal-on-scroll {
+    animation: none;
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+        opacity 650ms ease,
+        transform 650ms cubic-bezier(.22, .61, .36, 1);
+}
+
+.hero-step.reveal-on-scroll.is-visible,
+.checklist .step.reveal-on-scroll.is-visible,
+.progress-grid .card.reveal-on-scroll.is-visible,
+.pulse.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-step.reveal-on-scroll,
+    .checklist .step.reveal-on-scroll,
+    .progress-grid .card.reveal-on-scroll,
+    .pulse.reveal-on-scroll {
+        opacity: 1;
+        transform: none;
+    }
+}

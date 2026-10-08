@@ -106,3 +106,40 @@ document.querySelectorAll(".question-form").forEach(form => {
         }
     });
 });
+
+// анимация страницы
+(() => {
+    if (!document.querySelector(".checklist")) return;
+
+    if (
+        !("IntersectionObserver" in window) ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+        return;
+    }
+
+    const blocks = document.querySelectorAll(
+        ".hero-step, .checklist .step, .progress-grid .card, .pulse"
+    );
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.02,
+        rootMargin: "0px 0px -40px 0px"
+    });
+
+    blocks.forEach(block => {
+        if (block.getBoundingClientRect().top < window.innerHeight - 40) {
+            return;
+        }
+
+        block.classList.add("reveal-on-scroll");
+        observer.observe(block);
+    });
+})();

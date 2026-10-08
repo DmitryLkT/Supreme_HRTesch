@@ -1,81 +1,1038 @@
 [
 {
   "model": "onboarding.module",
-  "pk": 1,
-  "fields": {
-    "title": "Знакомство с компанией",
-    "description": "Мы — команда профессионалов, объединённых общей целью: делать продукты, которые приносят пользу людям. За годы работы мы выросли из небольшой идеи в устойчивую компанию, которой доверяют клиенты и партнёры.",
-    "order": 1,
-    "is_published": true,
-    "content": "Добро пожаловать в команду!\r\n\r\nРабочая документация хранится в корпоративной базе знаний.\r\nЕсли ты не можешь найти нужную информацию, обратись к наставнику.\r\n\r\nДля получения доступа к инструментам создай заявку в техническую поддержку.\r\nНе передавай свои пароли другим сотрудникам."
-  }
-},
-{
-  "model": "onboarding.module",
   "pk": 2,
   "fields": {
-    "title": "Рабочие инструменты",
-    "description": "В этом разделе — всё, что понадобится вам для ежедневной работы. Мы используем проверенный набор сервисов, которые помогают команде быть на связи и эффективно решать задачи.",
-    "order": 2,
-    "is_published": true,
-    "content": ""
-  }
-},
-{
-  "model": "onboarding.module",
-  "pk": 3,
-  "fields": {
-    "title": "Общение в команде",
-    "description": "Хорошая коммуникация — основа нашей работы. Здесь нет «глупых» вопросов, а своевременное обращение за помощью ценится больше, чем долгое молчание.",
-    "order": 3,
-    "is_published": true,
-    "content": ""
-  }
-},
-{
-  "model": "onboarding.module",
-  "pk": 4,
-  "fields": {
-    "title": "К кому обратиться за помощью",
-    "description": "В первые недели вопросов будет много — и это нормально. Главное: не оставайтесь с проблемой один на один. Вот к кому можно и нужно обращаться.",
-    "order": 4,
-    "is_published": true,
+    "title": "Пульс опрос",
+    "description": "Опрос для вновь прибывших сотрудников",
+    "order": 0,
+    "is_published": false,
     "content": ""
   }
 },
 {
   "model": "onboarding.question",
-  "pk": 1,
+  "pk": 2,
   "fields": {
     "module": 2,
-    "text": "Что нужно сделать, если нет доступа к рабочему инструменту?",
+    "text": "Я понимаю, какие результаты от меня ждут в ближайшие 30 дней.",
     "order": 1
   }
 },
 {
-  "model": "onboarding.answeroption",
-  "pk": 1,
+  "model": "onboarding.question",
+  "pk": 3,
   "fields": {
-    "question": 1,
-    "text": "Попросить коллегу передать свой пароль",
-    "is_correct": false
+    "module": 2,
+    "text": "Я знаю, по каким критериям оценят мою работу на испытательном сроке.",
+    "order": 2
   }
 },
 {
-  "model": "onboarding.answeroption",
-  "pk": 2,
+  "model": "onboarding.question",
+  "pk": 4,
   "fields": {
-    "question": 1,
-    "text": "Создать заявку в техническую поддержку",
-    "is_correct": true
+    "module": 2,
+    "text": "Я знаю, кто принимает решения по моим основным задачам.",
+    "order": 0
+  }
+},
+{
+  "model": "onboarding.question",
+  "pk": 5,
+  "fields": {
+    "module": 2,
+    "text": "Я знаю, к кому идти, если не понимаю, что делать.",
+    "order": 4
+  }
+},
+{
+  "model": "onboarding.question",
+  "pk": 6,
+  "fields": {
+    "module": 2,
+    "text": "Я уверен(а), что справлюсь с основными задачами роли.",
+    "order": 5
+  }
+},
+{
+  "model": "onboarding.question",
+  "pk": 7,
+  "fields": {
+    "module": 2,
+    "text": "У меня есть доступы и инструменты, чтобы работать без ожидания.",
+    "order": 6
+  }
+},
+{
+  "model": "onboarding.question",
+  "pk": 8,
+  "fields": {
+    "module": 2,
+    "text": "Я могу объяснить коллеге, как у нас проходит ключевой процесс моей роли.",
+    "order": 7
+  }
+},
+{
+  "model": "onboarding.question",
+  "pk": 9,
+  "fields": {
+    "module": 2,
+    "text": "Коллеги отвечают на мои вопросы без раздражения.",
+    "order": 8
+  }
+},
+{
+  "model": "onboarding.question",
+  "pk": 10,
+  "fields": {
+    "module": 2,
+    "text": "В компании есть человек, с которым я могу говорить откровенно.",
+    "order": 9
+  }
+},
+{
+  "model": "onboarding.question",
+  "pk": 11,
+  "fields": {
+    "module": 2,
+    "text": "Меня принимают как члена команды.",
+    "order": 10
+  }
+},
+{
+  "model": "onboarding.question",
+  "pk": 12,
+  "fields": {
+    "module": 2,
+    "text": "Я понимаю, какое поведение здесь поощряется, а какое нет, включая неписаные правила.",
+    "order": 11
+  }
+},
+{
+  "model": "onboarding.question",
+  "pk": 13,
+  "fields": {
+    "module": 2,
+    "text": "То, что я вижу на практике, совпадает с тем, что мне рассказывали при найме.",
+    "order": 12
+  }
+},
+{
+  "model": "onboarding.question",
+  "pk": 14,
+  "fields": {
+    "module": 2,
+    "text": "На работе я могу проявлять свои сильные стороны.",
+    "order": 13
+  }
+},
+{
+  "model": "onboarding.question",
+  "pk": 15,
+  "fields": {
+    "module": 2,
+    "text": "В этом месяце я чувствую себя перегруженным(ой).",
+    "order": 14
+  }
+},
+{
+  "model": "onboarding.question",
+  "pk": 16,
+  "fields": {
+    "module": 2,
+    "text": "Я рассчитываю работать здесь через год.",
+    "order": 15
+  }
+},
+{
+  "model": "onboarding.question",
+  "pk": 17,
+  "fields": {
+    "module": 2,
+    "text": "Я знаю, в какие часы меня ждут онлайн и как согласовывать срочное вне них.",
+    "order": 16
+  }
+},
+{
+  "model": "onboarding.question",
+  "pk": 18,
+  "fields": {
+    "module": 2,
+    "text": "Мне понятны особенности общения с коллегами из других стран.",
+    "order": 17
+  }
+},
+{
+  "model": "onboarding.question",
+  "pk": 19,
+  "fields": {
+    "module": 2,
+    "text": "По договору, налогам и отпускам мне всё понятно или я знаю, к кому обратиться.",
+    "order": 18
+  }
+},
+{
+  "model": "onboarding.question",
+  "pk": 20,
+  "fields": {
+    "module": 2,
+    "text": "На прошлой неделе я общался(лась) с коллегами не только по рабочим задачам.",
+    "order": 19
   }
 },
 {
   "model": "onboarding.answeroption",
   "pk": 3,
   "fields": {
-    "question": 1,
-    "text": "Создать личный аккаунт без согласования",
+    "question": 2,
+    "text": "1",
+    "is_correct": true
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 4,
+  "fields": {
+    "question": 2,
+    "text": "2",
+    "is_correct": true
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 5,
+  "fields": {
+    "question": 2,
+    "text": "3",
+    "is_correct": true
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 6,
+  "fields": {
+    "question": 2,
+    "text": "4",
+    "is_correct": true
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 7,
+  "fields": {
+    "question": 2,
+    "text": "5",
+    "is_correct": true
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 8,
+  "fields": {
+    "question": 3,
+    "text": "1",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 9,
+  "fields": {
+    "question": 3,
+    "text": "2",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 10,
+  "fields": {
+    "question": 3,
+    "text": "3",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 11,
+  "fields": {
+    "question": 3,
+    "text": "4",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 12,
+  "fields": {
+    "question": 3,
+    "text": "5",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 13,
+  "fields": {
+    "question": 4,
+    "text": "1",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 14,
+  "fields": {
+    "question": 4,
+    "text": "2",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 15,
+  "fields": {
+    "question": 4,
+    "text": "3",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 16,
+  "fields": {
+    "question": 4,
+    "text": "4",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 17,
+  "fields": {
+    "question": 4,
+    "text": "5",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 18,
+  "fields": {
+    "question": 5,
+    "text": "1",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 19,
+  "fields": {
+    "question": 5,
+    "text": "2",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 20,
+  "fields": {
+    "question": 5,
+    "text": "3",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 21,
+  "fields": {
+    "question": 5,
+    "text": "4",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 22,
+  "fields": {
+    "question": 5,
+    "text": "5",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 23,
+  "fields": {
+    "question": 6,
+    "text": "1",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 24,
+  "fields": {
+    "question": 6,
+    "text": "2",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 25,
+  "fields": {
+    "question": 6,
+    "text": "3",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 26,
+  "fields": {
+    "question": 6,
+    "text": "4",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 27,
+  "fields": {
+    "question": 6,
+    "text": "5",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 28,
+  "fields": {
+    "question": 7,
+    "text": "1",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 29,
+  "fields": {
+    "question": 7,
+    "text": "2",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 30,
+  "fields": {
+    "question": 7,
+    "text": "3",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 31,
+  "fields": {
+    "question": 7,
+    "text": "4",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 32,
+  "fields": {
+    "question": 7,
+    "text": "5",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 33,
+  "fields": {
+    "question": 8,
+    "text": "1",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 34,
+  "fields": {
+    "question": 8,
+    "text": "2",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 35,
+  "fields": {
+    "question": 8,
+    "text": "3",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 36,
+  "fields": {
+    "question": 8,
+    "text": "4",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 37,
+  "fields": {
+    "question": 8,
+    "text": "5",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 38,
+  "fields": {
+    "question": 9,
+    "text": "1",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 39,
+  "fields": {
+    "question": 9,
+    "text": "2",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 40,
+  "fields": {
+    "question": 9,
+    "text": "3",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 41,
+  "fields": {
+    "question": 9,
+    "text": "4",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 42,
+  "fields": {
+    "question": 9,
+    "text": "5",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 43,
+  "fields": {
+    "question": 10,
+    "text": "1",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 44,
+  "fields": {
+    "question": 10,
+    "text": "2",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 45,
+  "fields": {
+    "question": 10,
+    "text": "3",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 46,
+  "fields": {
+    "question": 10,
+    "text": "4",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 47,
+  "fields": {
+    "question": 10,
+    "text": "5",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 48,
+  "fields": {
+    "question": 11,
+    "text": "1",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 49,
+  "fields": {
+    "question": 11,
+    "text": "2",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 50,
+  "fields": {
+    "question": 11,
+    "text": "3",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 51,
+  "fields": {
+    "question": 11,
+    "text": "4",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 52,
+  "fields": {
+    "question": 11,
+    "text": "5",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 53,
+  "fields": {
+    "question": 12,
+    "text": "1",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 54,
+  "fields": {
+    "question": 12,
+    "text": "2",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 55,
+  "fields": {
+    "question": 12,
+    "text": "3",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 56,
+  "fields": {
+    "question": 12,
+    "text": "4",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 57,
+  "fields": {
+    "question": 12,
+    "text": "5",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 58,
+  "fields": {
+    "question": 13,
+    "text": "1",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 59,
+  "fields": {
+    "question": 13,
+    "text": "2",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 60,
+  "fields": {
+    "question": 13,
+    "text": "3",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 61,
+  "fields": {
+    "question": 13,
+    "text": "4",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 62,
+  "fields": {
+    "question": 13,
+    "text": "5",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 63,
+  "fields": {
+    "question": 14,
+    "text": "1",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 64,
+  "fields": {
+    "question": 14,
+    "text": "2",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 65,
+  "fields": {
+    "question": 14,
+    "text": "3",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 66,
+  "fields": {
+    "question": 14,
+    "text": "4",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 67,
+  "fields": {
+    "question": 14,
+    "text": "5",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 68,
+  "fields": {
+    "question": 15,
+    "text": "1",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 69,
+  "fields": {
+    "question": 15,
+    "text": "2",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 70,
+  "fields": {
+    "question": 15,
+    "text": "3",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 71,
+  "fields": {
+    "question": 15,
+    "text": "4",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 72,
+  "fields": {
+    "question": 15,
+    "text": "5",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 73,
+  "fields": {
+    "question": 16,
+    "text": "1",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 74,
+  "fields": {
+    "question": 16,
+    "text": "2",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 75,
+  "fields": {
+    "question": 16,
+    "text": "3",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 76,
+  "fields": {
+    "question": 16,
+    "text": "4",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 77,
+  "fields": {
+    "question": 16,
+    "text": "5",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 78,
+  "fields": {
+    "question": 17,
+    "text": "1",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 79,
+  "fields": {
+    "question": 17,
+    "text": "2",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 80,
+  "fields": {
+    "question": 17,
+    "text": "3",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 81,
+  "fields": {
+    "question": 17,
+    "text": "4",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 82,
+  "fields": {
+    "question": 17,
+    "text": "5",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 83,
+  "fields": {
+    "question": 18,
+    "text": "1",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 84,
+  "fields": {
+    "question": 18,
+    "text": "2",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 85,
+  "fields": {
+    "question": 18,
+    "text": "3",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 86,
+  "fields": {
+    "question": 18,
+    "text": "4",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 87,
+  "fields": {
+    "question": 18,
+    "text": "5",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 88,
+  "fields": {
+    "question": 19,
+    "text": "1",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 89,
+  "fields": {
+    "question": 19,
+    "text": "2",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 90,
+  "fields": {
+    "question": 19,
+    "text": "3",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 91,
+  "fields": {
+    "question": 19,
+    "text": "4",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 92,
+  "fields": {
+    "question": 19,
+    "text": "5",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 93,
+  "fields": {
+    "question": 20,
+    "text": "1",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 94,
+  "fields": {
+    "question": 20,
+    "text": "2",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 95,
+  "fields": {
+    "question": 20,
+    "text": "3",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 96,
+  "fields": {
+    "question": 20,
+    "text": "4",
+    "is_correct": false
+  }
+},
+{
+  "model": "onboarding.answeroption",
+  "pk": 97,
+  "fields": {
+    "question": 20,
+    "text": "5",
     "is_correct": false
   }
 }

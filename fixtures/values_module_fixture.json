@@ -1,0 +1,575 @@
+[
+  {
+    "model": "onboarding.module",
+    "pk": 100,
+    "fields": {
+      "title": "Ценности и поведение",
+      "description": "Как ценности компании выглядят в повседневном поведении",
+      "order": 1,
+      "is_published": false,
+      "content": "Урок 1. Мои сильные стороны. Вспомните ситуацию, где вы работали лучше всего, и назовите, что именно вам удалось. Как вы хотели бы применять это в первые 90 дней? Ответ обсуждается с руководителем на 1:1.\n\nУрок 2. Ценности через поведение. Для каждой ценности: формулировка из документов компании; что это значит на практике (2–3 наблюдаемых поведения); чем это не является; пример из компании; где проверить и к кому идти. [ВСТАВИТЬ ЦЕННОСТИ КОМПАНИИ]\n\nУрок 3. Заявленное и реальное. Отметьте, что из увиденного за первые недели совпадает с ценностями, а что расходится.\n\nУрок 4. Сценарии и разговор с наставником. Ответьте на вопросы и обсудите спорные случаи с наставником."
+    }
+  },
+  {
+    "model": "onboarding.question",
+    "pk": 1000,
+    "fields": {
+      "module": 100,
+      "text": "Вы нашли свою ошибку в отчёте, который уже ушёл клиенту. Никто её не заметил. Что вы сделаете?",
+      "order": 1
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10000,
+    "fields": {
+      "question": 1000,
+      "text": "Тихо заменю файл на исправленный",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10001,
+    "fields": {
+      "question": 1000,
+      "text": "Сразу сообщу руководителю и поступлю по процедуре компании",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10002,
+    "fields": {
+      "question": 1000,
+      "text": "Исправлю в следующем отчёте",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10003,
+    "fields": {
+      "question": 1000,
+      "text": "Подожду, пока ошибку заметят",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "onboarding.question",
+    "pk": 1001,
+    "fields": {
+      "module": 100,
+      "text": "На встрече руководитель предлагает решение, в котором вы видите риск. Что вы сделаете?",
+      "order": 2
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10004,
+    "fields": {
+      "question": 1001,
+      "text": "Соглашусь на встрече и скажу о сомнениях после",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10005,
+    "fields": {
+      "question": 1001,
+      "text": "Напишу о своих сомнениях коллегам в личный чат",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10006,
+    "fields": {
+      "question": 1001,
+      "text": "Озвучу риск в той форме, которая принята в компании",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10007,
+    "fields": {
+      "question": 1001,
+      "text": "Промолчу",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "onboarding.question",
+    "pk": 1002,
+    "fields": {
+      "module": 100,
+      "text": "Ваша задача застряла из-за коллеги из другой команды. Что вы сделаете?",
+      "order": 3
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10008,
+    "fields": {
+      "question": 1002,
+      "text": "Сразу пожалуюсь его руководителю",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10009,
+    "fields": {
+      "question": 1002,
+      "text": "Подожду, пока он ответит сам",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10010,
+    "fields": {
+      "question": 1002,
+      "text": "Сделаю его часть сам в обход доступов",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10011,
+    "fields": {
+      "question": 1002,
+      "text": "Напишу ему с чётким запросом и сроком, а при отсутствии ответа эскалирую по регламенту",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.question",
+    "pk": 1003,
+    "fields": {
+      "module": 100,
+      "text": "Срок по вашей задаче сорвётся из-за вашей ошибки. Когда вы об этом сообщите?",
+      "order": 4
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10012,
+    "fields": {
+      "question": 1003,
+      "text": "После того как исправлю ошибку",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10013,
+    "fields": {
+      "question": 1003,
+      "text": "В день дедлайна",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10014,
+    "fields": {
+      "question": 1003,
+      "text": "Сразу, как только пойму, вместе с планом исправления",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.question",
+    "pk": 1004,
+    "fields": {
+      "module": 100,
+      "text": "Клиент просит то, что нарушает процедуру. Что вы сделаете?",
+      "order": 5
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10015,
+    "fields": {
+      "question": 1004,
+      "text": "Передам коллеге без комментариев",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10016,
+    "fields": {
+      "question": 1004,
+      "text": "Выполню просьбу",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10017,
+    "fields": {
+      "question": 1004,
+      "text": "Откажу, не объясняя причин",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10018,
+    "fields": {
+      "question": 1004,
+      "text": "Объясню причину, предложу допустимую альтернативу и эскалирую по политике",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.question",
+    "pk": 1005,
+    "fields": {
+      "module": 100,
+      "text": "Коллега из другой команды просит помочь, но это не входит в ваши показатели. Что вы сделаете?",
+      "order": 6
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10019,
+    "fields": {
+      "question": 1005,
+      "text": "Откажу: это не мой показатель",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10020,
+    "fields": {
+      "question": 1005,
+      "text": "Помогу, никому не говоря",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10021,
+    "fields": {
+      "question": 1005,
+      "text": "Помогу и согласую это с руководителем",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10022,
+    "fields": {
+      "question": 1005,
+      "text": "Предложу обратиться к другому человеку",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.question",
+    "pk": 1006,
+    "fields": {
+      "module": 100,
+      "text": "Все в команде остаются допоздна, формального требования нет. Что вы сделаете?",
+      "order": 7
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10023,
+    "fields": {
+      "question": 1006,
+      "text": "Спрошу у руководителя или наставника, как здесь принято",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10024,
+    "fields": {
+      "question": 1006,
+      "text": "Понаблюдаю, как поступают другие",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10025,
+    "fields": {
+      "question": 1006,
+      "text": "Останусь, чтобы не выделяться",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10026,
+    "fields": {
+      "question": 1006,
+      "text": "Уйду в обычное время, не уточняя",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.question",
+    "pk": 1007,
+    "fields": {
+      "module": 100,
+      "text": "Если вы замечаете расхождение между заявленными ценностями и практикой, откуда оно идёт?",
+      "order": 8
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10027,
+    "fields": {
+      "question": 1007,
+      "text": "От поведения руководителя",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10028,
+    "fields": {
+      "question": 1007,
+      "text": "От процессов и регламентов",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10029,
+    "fields": {
+      "question": 1007,
+      "text": "От поведения коллег",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10030,
+    "fields": {
+      "question": 1007,
+      "text": "От системы поощрений",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10031,
+    "fields": {
+      "question": 1007,
+      "text": "Расхождений пока не замечаю",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.module",
+    "pk": 101,
+    "fields": {
+      "title": "Ценности и поведение: удалённая работа и релокация",
+      "description": "Дополнение для сотрудников, работающих удалённо или переехавших",
+      "order": 2,
+      "is_published": false,
+      "content": ""
+    }
+  },
+  {
+    "model": "onboarding.question",
+    "pk": 1008,
+    "fields": {
+      "module": 101,
+      "text": "Коллега из другой страны отвечает на ваше предложение: «Interesting, we will think about it». Как вы это поймёте?",
+      "order": 1
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10032,
+    "fields": {
+      "question": 1008,
+      "text": "Как реальный интерес, жду решения",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10033,
+    "fields": {
+      "question": 1008,
+      "text": "Как вежливый отказ",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10034,
+    "fields": {
+      "question": 1008,
+      "text": "Как просьбу уточнить предложение",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10035,
+    "fields": {
+      "question": 1008,
+      "text": "Не уверен(а), уточню у коллеги или наставника",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.question",
+    "pk": 1009,
+    "fields": {
+      "module": 101,
+      "text": "Как вы фиксируете важное решение при асинхронной работе?",
+      "order": 2
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10036,
+    "fields": {
+      "question": 1009,
+      "text": "Письменно в общем канале или треде, доступном команде",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10037,
+    "fields": {
+      "question": 1009,
+      "text": "В личной переписке с тем, кого это касается",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10038,
+    "fields": {
+      "question": 1009,
+      "text": "Устно, без записи",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10039,
+    "fields": {
+      "question": 1009,
+      "text": "Не знаю, как это принято в нашей команде",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.question",
+    "pk": 1010,
+    "fields": {
+      "module": 101,
+      "text": "Как вы сообщаете, что будете недоступны в рабочие часы?",
+      "order": 3
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10040,
+    "fields": {
+      "question": 1010,
+      "text": "Заранее, в принятом канале",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10041,
+    "fields": {
+      "question": 1010,
+      "text": "Когда спросят",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10042,
+    "fields": {
+      "question": 1010,
+      "text": "Не сообщаю",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10043,
+    "fields": {
+      "question": 1010,
+      "text": "Не знаю, как это принято",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.module",
+    "pk": 102,
+    "fields": {
+      "title": "Ценности и поведение: местные сотрудники",
+      "description": "Дополнение для сотрудников, работающих в своей стране",
+      "order": 3,
+      "is_published": false,
+      "content": ""
+    }
+  },
+  {
+    "model": "onboarding.question",
+    "pk": 1011,
+    "fields": {
+      "module": 102,
+      "text": "Принятая «у нас» практика (например, согласование «по знакомству») противоречит политике компании. Что вы сделаете?",
+      "order": 1
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10044,
+    "fields": {
+      "question": 1011,
+      "text": "Сообщу по каналу, указанному в политике",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10045,
+    "fields": {
+      "question": 1011,
+      "text": "Откажусь участвовать и никому не скажу",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10046,
+    "fields": {
+      "question": 1011,
+      "text": "Сделаю как принято",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "onboarding.answeroption",
+    "pk": 10047,
+    "fields": {
+      "question": 1011,
+      "text": "Спрошу наставника, как поступить",
+      "is_correct": true
+    }
+  }
+]
